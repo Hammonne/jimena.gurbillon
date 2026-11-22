@@ -1,5 +1,6 @@
 /* Hierarchical edge bundling "Herramientas y proyectos": qué herramienta usé en qué proyecto.
-   Datos en data/tools.json. */
+   Datos en data/tools.json.
+   Hover resalta un nodo; clic (o Enter/Espacio) lo deja seleccionado; clic en el fondo o Escape limpia. */
 import { onRedraw } from '../core.js';
 import { lang } from '../i18n.js';
 
@@ -22,9 +23,13 @@ export function initBundle(data) {
     .style('stroke', () => 'var(--accent)').attr('stroke-opacity', .35).attr('stroke-width', 1.3).style('mix-blend-mode', 'normal');
   const deg = new Map(); edges.forEach(([a, b]) => { deg.set(a, (deg.get(a) || 0) + 1); deg.set(b, (deg.get(b) || 0) + 1); });
   const nodes = g.append('g').selectAll('g').data(leaves).join('g').attr('transform', (d) => `rotate(${d.x * 180 / Math.PI - 90}) translate(${d.y},0)`);
-  nodes.append('circle').attr('r', (d) => 3 + Math.sqrt(deg.get(d) || 0) * 1.6).style('fill', (d) => `var(${groups[d.data.gi].v})`).style('stroke', 'var(--bg2)').attr('stroke-width', 1.5);
+  const rOf = (d) => 3 + Math.sqrt(deg.get(d) || 0) * 1.6;
+  nodes.append('circle').attr('r', rOf).style('fill', (d) => `var(${groups[d.data.gi].v})`).style('stroke', 'var(--bg2)').attr('stroke-width', 1.5);
+  // anillo: indica la selección (sólido) y el foco del teclado (punteado)
+  const ring = nodes.append('circle').attr('class', 'ring').attr('r', (d) => rOf(d) + 5).style('fill', 'none').style('stroke', (d) => `var(${groups[d.data.gi].v})`).attr('stroke-width', 1.5).attr('opacity', 0).style('pointer-events', 'none');
   nodes.append('text').attr('dy', '0.31em').attr('x', (d) => d.x < Math.PI ? 18 : -18).attr('text-anchor', (d) => d.x < Math.PI ? 'start' : 'end').attr('transform', (d) => d.x >= Math.PI ? 'rotate(180)' : null)
     .style('fill', 'var(--text)').style('font', (d) => d.data.gi === 0 ? '600 16px var(--font)' : '400 15px var(--font)').style('cursor', 'pointer');
+  nodes.attr('tabindex', 0).attr('role', 'button').attr('aria-pressed', 'false').style('cursor', 'pointer').style('outline', 'none');
   const nodeT = nodes.select('text');
   function hl(n) {
     if (!n) { paths.attr('stroke-opacity', .35).style('stroke', 'var(--accent)').attr('stroke-width', 1.3); nodes.attr('opacity', 1); return; }
@@ -32,7 +37,37 @@ export function initBundle(data) {
     paths.attr('stroke-opacity', ([a, b]) => a === n || b === n ? .95 : .04).style('stroke', ([a, b]) => a === n || b === n ? `var(${groups[(a === n ? b : a).data.gi].v})` : 'var(--muted)').attr('stroke-width', ([a, b]) => a === n || b === n ? 2.2 : 1).filter(([a, b]) => a === n || b === n).raise();
     nodes.attr('opacity', (d) => near.has(d) ? 1 : .25);
   }
-  nodes.on('pointerenter', (e, d) => hl(d)).on('pointerleave', () => hl(null));
-  const setL = () => { glab.text((d) => groups[d.data.gi][lang]); nodeT.text((d) => lang === 'en' && NM_EN[d.data.name] ? NM_EN[d.data.name] : d.data.name); };
+  /* Selección: igual que en "How it all connects". Mientras hay selección, el hover no cambia nada. */
+  let selected = null, focused = null;
+  const showRing = () => ring.attr('opacity', (d) => d === selected ? 1 : d === focused ? .6 : 0).attr('stroke-dasharray', (d) => d === selected ? null : '2 3');
+  function select(n) {
+    selected = n;
+    hl(selected);
+    nodes.attr('aria-pressed', (d) => d === selected ? 'true' : 'false');
+    nodeT.style('font-weight', (d) => d === selected ? 700 : null);
+    showRing();
+  }
+  nodes.on('pointerenter', (e, d) => { if (!selected) hl(d); }).on('pointerleave', () => { if (!selected) hl(null); })
+    .on('click', (e, d) => { e.stopPropagation(); select(selected === d ? null : d); })
+    .on('keydown', (e, d) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(selected === d ? null : d); }
+    })
+    .on('focus', (e, d) => { focused = e.currentTarget.matches(':focus-visible') ? d : null; showRing(); })   // anillo punteado solo con teclado.on('blur', () => { focused = null; showRing(); });
+  svg.on('click', () => select(null))   // clic en el fondo (o en una arista) limpia la selección
+    .on('keydown', (e) => { if (e.key === 'Escape') select(null); });
+  const nameOf = (d) => lang === 'en' && NM_EN[d.data.name] ? NM_EN[d.data.name] : d.data.name;
+  const setL = () => {
+    glab.text((d) => groups[d.data.gi][lang]); nodeT.text(nameOf);
+    nodes.attr('aria-label', (d) => `${nameOf(d)} · ${groups[d.data.gi][lang]}`);
+    fit();
+  };
+  /* Que ninguna etiqueta quede cortada: si algo se sale arriba o abajo, el viewBox crece solo en vertical
+     (el ancho no cambia, así que el diagrama no se achica). */
+  const vb0 = svg.attr('viewBox').split(/[ ,]+/).map(Number);
+  function fit() {
+    const b = svg.node().getBBox(), m = 12;
+    const y0 = Math.min(vb0[1], b.y - m), y1 = Math.max(vb0[1] + vb0[3], b.y + b.height + m);
+    svg.attr('viewBox', `${vb0[0]} ${y0} ${vb0[2]} ${y1 - y0}`);
+  }
   setL(); onRedraw((w) => { if (w === 'lang') setL(); });
 }
