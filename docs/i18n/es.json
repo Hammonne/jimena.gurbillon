@@ -45,7 +45,6 @@
   "c1_p": "GNNs espacio-temporales y Transformers para analizar crimen urbano en Lima y São Paulo, sobre grafos construidos a partir de distancias geográficas.",
   "c2_t": "Dinámica no lineal",
   "c2_p": "Grupo de renormalización en osciladores de Van der Pol y Duffing: aproximaciones más cercanas a la solución exacta que la teoría de perturbaciones. Ahora, el sistema acoplado.",
-  "epoch": "época",
   "c3_t": "Ver aprender a una red",
   "c3_p": "Me gustan los modelos por la matemática que tienen detrás. Aquí, activaciones ocultas que se separan por clase a medida que la red entrena (al estilo de Rauber et al., 2017). Ahora exploro bases de datos vectoriales e indexación de embeddings.",
   "ns": "Descansado",
@@ -124,5 +123,7 @@
   "pn_aria": "Sección anterior y siguiente",
   "all_sections": "Todas las secciones",
   "map_aria": "Mapa de mí: cada nodo grande es una sección de la página",
-  "photo_alt": "Foto de Jimena Gurbillon"
+  "photo_alt": "Foto de Jimena Gurbillon",
+  "act_label": "época {e} · acc de prueba {a}",
+  "c3_note": "Datos reales: MLP sobre sklearn digits, última capa oculta, t-SNE alineado entre épocas. Basado en Rauber et al. (2017)."
 }

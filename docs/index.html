@@ -141,8 +141,8 @@
       </article>
       <article class="card reveal">
         <div class="viz"><canvas id="vAct" aria-label="Proyección de activaciones ocultas que se separan por clase a lo largo de las épocas"></canvas>
-          <div class="ctrl"><button type="button" id="actPlay">▶</button><span data-i18n="epoch">epoch</span><input id="epoch" type="range" min="0" max="100" value="0" aria-label="Época"><span id="epv">0</span></div></div>
-        <div class="body"><span class="tag">ML · DL · embeddings</span><h3 data-i18n="c3_t">Watching a network learn</h3><p data-i18n="c3_p">I like models for the math behind them. Here, hidden activations separating by class as the network trains (in the style of Rauber et al., 2017). Now exploring vector databases and embedding indexing.</p><div class="pills"><span>PyTorch</span><span>t-SNE / UMAP</span><span>HNSW</span></div></div>
+          <div class="ctrl"><button type="button" id="actPlay">▶</button><input id="epoch" type="range" min="0" max="19" value="0" aria-label="Época"><span id="epv"></span></div></div>
+        <div class="body"><span class="tag">ML · DL · embeddings</span><h3 data-i18n="c3_t">Watching a network learn</h3><p data-i18n="c3_p">I like models for the math behind them. Here, hidden activations separating by class as the network trains (in the style of Rauber et al., 2017). Now exploring vector databases and embedding indexing.</p><div class="pills"><span>PyTorch</span><span>t-SNE / UMAP</span><span>HNSW</span></div><p class="note" data-i18n="c3_note">Real data: MLP on sklearn digits, last hidden layer, t-SNE aligned across epochs. After Rauber et al. (2017).</p></div>
       </article>
       <article class="card reveal">
         <div class="viz"><canvas id="vEeg" aria-hidden="true" style="opacity:.16"></canvas><svg id="vTopo" role="img" aria-label="Topomapa real de potencia theta en 61 electrodos, sin privación y con privación de sueño"></svg>

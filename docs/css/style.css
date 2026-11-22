@@ -130,6 +130,9 @@ blockquote span{display:block;font:500 12px var(--mono);font-style:normal;margin
 .ctrl .seg button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
 .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .pills span{font:500 12px var(--mono);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.card .note{font:400 12px var(--mono);color:var(--faint);margin-top:14px;line-height:1.55}
+.ctrl #epv{white-space:nowrap;font-variant-numeric:tabular-nums}
+#vAct ~ .ctrl input[type=range]{min-width:0}
 
 /* GRAPH */
 .graphbox{border:1px solid var(--line);border-radius:20px;background:var(--bg2);overflow:hidden;position:relative}

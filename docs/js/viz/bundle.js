@@ -31,7 +31,10 @@ export function initBundle(data) {
   nodes.append('circle').attr('r', rOf).style('fill', (d) => `var(${groups[d.data.gi].v})`).style('stroke', 'var(--bg2)').attr('stroke-width', 1.5);
   // anillo: indica la selección (sólido) y el foco del teclado (punteado)
   const ring = nodes.append('circle').attr('class', 'ring').attr('r', (d) => rOf(d) + 5).style('fill', 'none').style('stroke', (d) => `var(${groups[d.data.gi].v})`).attr('stroke-width', 1.5).attr('opacity', 0).style('pointer-events', 'none');
-  nodes.append('text').attr('dy', '0.31em').attr('x', (d) => d.x < Math.PI ? 18 : -18).attr('text-anchor', (d) => d.x < Math.PI ? 'start' : 'end').attr('transform', (d) => d.x >= Math.PI ? 'rotate(180)' : null)
+  // la orientación de la etiqueta (girar 180° o no) se decide por el ángulo medio de su GRUPO,
+  // no por el del nodo: así todas las etiquetas de un grupo se leen en el mismo sentido
+  const flip = (d) => { const ls = d.parent.leaves(); return (ls[0].x + ls[ls.length - 1].x) / 2 >= Math.PI; };
+  nodes.append('text').attr('dy', '0.31em').attr('x', (d) => flip(d) ? -18 : 18).attr('text-anchor', (d) => flip(d) ? 'end' : 'start').attr('transform', (d) => flip(d) ? 'rotate(180)' : null)
     .style('fill', 'var(--text)').style('font', (d) => d.data.gi === 0 ? '600 16px var(--font)' : '400 15px var(--font)').style('cursor', 'pointer');
   nodes.attr('tabindex', 0).attr('role', 'button').attr('aria-pressed', 'false').style('cursor', 'pointer').style('outline', 'none');
   const nodeT = nodes.select('text');

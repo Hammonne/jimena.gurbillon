@@ -1,6 +1,9 @@
-/* Tarjeta "Ver aprender a una red": activaciones ocultas que se separan por clase
-   a lo largo de las épocas (al estilo de Rauber et al., 2017). Canvas. */
+/* Tarjeta "Watching a network learn": activaciones REALES de la última capa oculta de una MLP
+   entrenada sobre sklearn digits (data/hidden_activity.json, generado con scripts/hidden_activity.py),
+   proyectadas con t-SNE alineado entre épocas (Rauber et al., 2017).
+   Se anima interpolando posiciones entre las épocas guardadas; cada punto deja una estela corta. Canvas. */
 import { css, reduce, onRedraw } from '../core.js';
+import { t } from '../i18n.js';
 
 export function initNetwork() {
   const cv = document.getElementById('vAct'), ctx = cv.getContext('2d'); let W, H, dpr = devicePixelRatio || 1;
@@ -9,31 +12,48 @@ export function initNetwork() {
   const palV = ['--accent','--coral','--yel','--teal','--blue','--vio','--grey','--accent-ink','--muted','--text'];
   let pal = palV.map(css);
   onRedraw((w) => { if (w === 'theme') pal = palV.map(css); });
-  const pts = []; for (let c = 0; c < 10; c++) { const ang = c / 10 * 2 * Math.PI; for (let i = 0; i < 80; i++) { const g = d3.randomNormal(0, 1); pts.push({ c, x0: g() * .35, y0: g() * .35, t: Math.random(), w: g() * .12, ang }); } }
-  let ep = 0, playing = !reduce;
   const slider = document.getElementById('epoch'), epv = document.getElementById('epv'), btn = document.getElementById('actPlay');
-  slider.oninput = () => { ep = +slider.value; playing = false; btn.textContent = '▶'; };
-  btn.onclick = () => { playing = !playing; if (ep >= 100) ep = 0; btn.textContent = playing ? '❚❚' : '▶'; };
-  btn.textContent = playing ? '❚❚' : '▶';
-  function pos(p, e) {
-    const s = d3.easeCubicInOut(e / 100), r = s * (.25 + p.t * .7);
-    const a = p.ang + p.w * (1 - s * .5) + Math.sin(p.t * 6 + p.c) * .08 * s;
-    return [p.x0 * (1 - s) + Math.cos(a) * r, p.y0 * (1 - s) + Math.sin(a) * r];
-  }
-  function frame() {
-    if (playing) { ep = Math.min(100, ep + .25); slider.value = ep; if (ep >= 100) { playing = false; btn.textContent = '▶'; } }
-    epv.textContent = Math.round(ep);
-    ctx.clearRect(0, 0, W, H);
-    const cx = W / 2, cy = H / 2 - 16, R = Math.min(W, H) * .46;
-    ctx.lineWidth = .6;
-    for (const p of pts) {
-      ctx.strokeStyle = pal[p.c]; ctx.globalAlpha = .28; ctx.beginPath();
-      for (let e = 0; e <= ep; e += 4) { const [x, y] = pos(p, e); e ? ctx.lineTo(cx + x * R, cy + y * R) : ctx.moveTo(cx + x * R, cy + y * R); }
-      ctx.stroke();
-      const [x, y] = pos(p, ep); ctx.globalAlpha = .9; ctx.fillStyle = pal[p.c]; ctx.beginPath(); ctx.arc(cx + x * R, cy + y * R, 1.6, 0, 7); ctx.fill();
+
+  d3.json('data/hidden_activity.json').then((D) => {
+    const E = D.epochs.length, last = E - 1;
+    const xr = d3.max(D.x.flat(), Math.abs) || 1, yr = d3.max(D.y.flat(), Math.abs) || 1;   // rango real de los datos
+    const byClass = d3.range(10).map((c) => D.labels.flatMap((l, i) => (l === c ? [i] : [])));
+    slider.min = 0; slider.max = last; slider.step = 'any'; slider.value = 0;
+    let f = 0, playing = !reduce, shown = '';
+    const SPEED = last / (14 * 60);            // ~14 s de la época 0 a la última
+    const TRAIL = [0, .1, .2, .3];             // estela: dónde estaba el punto un poco antes
+    const at = (i, g) => { g = Math.max(0, g); const a = Math.floor(g), b = Math.min(last, a + 1), u = g - a; return [D.x[a][i] + (D.x[b][i] - D.x[a][i]) * u, D.y[a][i] + (D.y[b][i] - D.y[a][i]) * u]; };
+    const label = () => {   // "epoch 12 · test acc 0.94" (la época guardada más cercana)
+      const k = Math.round(f), s = t('act_label').replace('{e}', D.epochs[k]).replace('{a}', D.acc[k].toFixed(2));
+      if (s !== shown) { epv.textContent = s; shown = s; }
+    };
+    const setBtn = () => { btn.textContent = playing ? '❚❚' : '▶'; };
+    slider.oninput = () => { f = +slider.value; playing = false; setBtn(); };
+    btn.onclick = () => { playing = !playing; if (playing && f >= last) f = 0; setBtn(); };
+    onRedraw((w) => { if (w === 'lang') { shown = ''; label(); } });
+    setBtn();
+
+    function frame() {
+      if (playing) { f = Math.min(last, f + SPEED); slider.value = f; if (f >= last) { playing = false; setBtn(); } }
+      label();
+      ctx.clearRect(0, 0, W, H);
+      const cx = W / 2, cy = (H - 56) / 2, k = Math.min(W * .46 / xr, (H - 56) / 2 / yr - 7);   // con margen: nada toca los bordes ni la barra   // misma escala en x e y
+      const P = (p) => [cx + p[0] * k, cy - p[1] * k];
+      ctx.lineWidth = 1; ctx.globalAlpha = .22;
+      for (let c = 0; c < 10; c++) {             // estelas cortas y tenues
+        ctx.strokeStyle = pal[c]; ctx.beginPath();
+        for (const i of byClass[c]) TRAIL.forEach((d, s) => { const [x, y] = P(at(i, f - d)); s ? ctx.lineTo(x, y) : ctx.moveTo(x, y); });
+        ctx.stroke();
+      }
+      ctx.globalAlpha = .9;
+      for (let c = 0; c < 10; c++) {             // puntos, coloreados por clase (dígito)
+        ctx.fillStyle = pal[c]; ctx.beginPath();
+        for (const i of byClass[c]) { const [x, y] = P(at(i, f)); ctx.moveTo(x + 1.8, y); ctx.arc(x, y, 1.8, 0, 7); }
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(frame);
     }
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(frame);
-  }
-  frame();
+    frame();
+  }).catch((err) => console.error('No se pudieron cargar las activaciones:', err));
 }
