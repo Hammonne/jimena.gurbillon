@@ -1,0 +1,33 @@
+{
+  "groups": [
+    { "es": "Proyectos", "en": "Projects", "color": "--accent",
+      "items": ["GINIA", "El Popular", "BATIMIX (EEG)", "Dermis", "Hackathon NTT DATA", "GAIA", "TA Machine Learning", "TA Base de Datos I", "TA Programación 2"] },
+    { "es": "Lenguajes", "en": "Languages", "color": "--teal",
+      "items": ["Python", "C++", "R", "SQL", "JavaScript"] },
+    { "es": "ML y DL", "en": "ML & DL", "color": "--blue",
+      "items": ["PyTorch", "Scikit-learn", "TensorFlow", "XGBoost", "Transformers", "GNN"] },
+    { "es": "Datos y visualización", "en": "Data & viz", "color": "--vio",
+      "items": ["Pandas", "GeoPandas", "NetworkX", "MNE", "D3.js", "Plotly", "Matplotlib"] },
+    { "es": "Big Data y cloud", "en": "Big data & cloud", "color": "--yel",
+      "items": ["Spark", "Neo4j", "MongoDB", "AWS", "Docker", "Gradescope"] },
+    { "es": "Matemática", "en": "Math", "color": "--coral",
+      "items": ["SciPy", "RK4", "Renormalización", "Optimización"] }
+  ],
+  "uses": {
+    "GINIA": ["Python", "PyTorch", "GNN", "Transformers", "GeoPandas", "NetworkX", "Pandas"],
+    "El Popular": ["Python", "SciPy", "RK4", "Renormalización", "Matplotlib"],
+    "BATIMIX (EEG)": ["Python", "MNE", "D3.js", "JavaScript", "Pandas", "Scikit-learn", "SciPy"],
+    "Dermis": ["Python", "PyTorch", "Transformers", "TensorFlow", "Scikit-learn", "AWS"],
+    "Hackathon NTT DATA": ["Python", "XGBoost", "Pandas", "Optimización", "Plotly", "SQL"],
+    "GAIA": ["Python", "Spark", "Pandas", "Matplotlib", "Docker"],
+    "TA Machine Learning": ["Python", "Scikit-learn", "PyTorch", "Matplotlib"],
+    "TA Base de Datos I": ["SQL", "MongoDB", "Neo4j"],
+    "TA Programación 2": ["C++", "Gradescope"]
+  },
+  "english": {
+    "Renormalización": "Renormalization",
+    "Optimización": "Optimization",
+    "TA Base de Datos I": "TA Databases I",
+    "TA Programación 2": "TA Programming 2"
+  }
+}

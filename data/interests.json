@@ -1,0 +1,57 @@
+{
+  "communities": [
+    { "id": "gnn", "es": "Redes neuronales de grafos", "en": "Graph neural networks", "color": "--teal", "topics": [
+      { "id": "dysat", "es": "DySAT", "en": "DySAT" },
+      { "id": "graphsage", "es": "GraphSAGE", "en": "GraphSAGE" },
+      { "id": "gcn", "es": "GCN", "en": "GCN" },
+      { "id": "gat", "es": "GAT", "en": "GAT" },
+      { "id": "dynamic-graphs", "es": "grafos dinámicos", "en": "dynamic graphs" },
+      { "id": "temporal-attention", "es": "atención temporal", "en": "temporal attention" } ] },
+    { "id": "nonlinear", "es": "Dinámica no lineal", "en": "Nonlinear dynamics", "color": "--mint", "topics": [
+      { "id": "limit-cycles", "es": "ciclos límite", "en": "limit cycles" },
+      { "id": "rg", "es": "grupo de renormalización", "en": "renormalization group" },
+      { "id": "perturbation", "es": "teoría de perturbaciones", "en": "perturbation theory" },
+      { "id": "chaos", "es": "caos", "en": "chaos" },
+      { "id": "coupled", "es": "osciladores acoplados", "en": "coupled oscillators" } ] },
+    { "id": "ml", "es": "ML y DL", "en": "ML & DL", "color": "--blue", "topics": [
+      { "id": "transformers", "es": "Transformers", "en": "Transformers" },
+      { "id": "regularization", "es": "regularización", "en": "regularization" },
+      { "id": "bias-variance", "es": "sesgo–varianza", "en": "bias–variance" },
+      { "id": "pca", "es": "PCA / SVD", "en": "PCA / SVD" },
+      { "id": "clustering", "es": "clustering", "en": "clustering" },
+      { "id": "rnn", "es": "RNN", "en": "RNN" } ] },
+    { "id": "embeddings", "es": "Embeddings y búsqueda vectorial", "en": "Embeddings & vector search", "color": "--vio", "topics": [
+      { "id": "cosine", "es": "similitud coseno", "en": "cosine similarity" },
+      { "id": "ann", "es": "búsqueda de vecinos aproximados (HNSW)", "en": "approximate nearest neighbors (HNSW)" },
+      { "id": "latent", "es": "espacios latentes", "en": "latent spaces" },
+      { "id": "tsne-umap", "es": "t-SNE / UMAP", "en": "t-SNE / UMAP" } ] },
+    { "id": "geo", "es": "Modelado geoespacial", "en": "Geospatial modeling", "color": "--yel", "topics": [
+      { "id": "spatial-graphs", "es": "grafos espaciales", "en": "spatial graphs" },
+      { "id": "projections", "es": "proyecciones cartográficas", "en": "map projections" },
+      { "id": "autocorrelation", "es": "autocorrelación espacial", "en": "spatial autocorrelation" },
+      { "id": "urban-crime", "es": "crimen urbano", "en": "urban crime" } ] },
+    { "id": "eeg", "es": "EEG y señales", "en": "EEG & signals", "color": "--grey", "topics": [
+      { "id": "theta", "es": "potencia theta", "en": "theta power" },
+      { "id": "topomaps", "es": "topomapas", "en": "topomaps" },
+      { "id": "ica", "es": "ICA", "en": "ICA" },
+      { "id": "paired-tests", "es": "pruebas pareadas", "en": "paired tests" },
+      { "id": "sleep", "es": "privación de sueño", "en": "sleep deprivation" } ] },
+    { "id": "viz", "es": "Visualización de datos", "en": "Data visualization", "color": "--accent", "topics": [
+      { "id": "idioms", "es": "idioms", "en": "idioms" },
+      { "id": "edge-bundling", "es": "edge bundling", "en": "edge bundling" },
+      { "id": "dot-maps", "es": "dot maps", "en": "dot maps" },
+      { "id": "shap-lime", "es": "interpretabilidad visual (SHAP, LIME)", "en": "visual interpretability (SHAP, LIME)" } ] },
+    { "id": "micro", "es": "Microeconomía", "en": "Microeconomics", "color": "--coral", "topics": [
+      { "id": "shapley", "es": "valores de Shapley", "en": "Shapley values" },
+      { "id": "game-theory", "es": "teoría de juegos", "en": "game theory" },
+      { "id": "data-economics", "es": "economía de los datos", "en": "data economics" } ] }
+  ],
+  "links": [
+    ["shap-lime", "shapley"],
+    ["dysat", "temporal-attention"],
+    ["temporal-attention", "transformers"],
+    ["spatial-graphs", "gnn"],
+    ["topomaps", "dot-maps"],
+    ["tsne-umap", "pca"]
+  ]
+}

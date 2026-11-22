@@ -1,0 +1,23 @@
+{
+  "root": { "es": "Lo que he enseñado", "en": "What I’ve taught" },
+  "courses": [
+    { "es": "Machine Learning · 2025", "en": "Machine Learning · 2025", "color": "--accent", "topics": [
+      { "es": "regresión y regularización", "en": "regression & regularization" },
+      { "es": "sesgo–varianza", "en": "bias–variance" },
+      { "es": "clasificación", "en": "classification" },
+      { "es": "PCA · SVD", "en": "PCA · SVD" },
+      { "es": "clustering", "en": "clustering" },
+      { "es": "redes neuronales · RNN", "en": "neural nets · RNN" } ] },
+    { "es": "Base de Datos I · 2026-1", "en": "Databases I · 2026-1", "color": "--teal", "topics": [
+      { "es": "modelo ER y relacional", "en": "ER & relational model" },
+      { "es": "álgebra relacional", "en": "relational algebra" },
+      { "es": "SQL · vistas · triggers", "en": "SQL · views · triggers" },
+      { "es": "normalización", "en": "normalization" },
+      { "es": "índices y optimización", "en": "indexing & optimization" },
+      { "es": "transacciones · NoSQL", "en": "transactions · NoSQL" } ] },
+    { "es": "Programación 2 · 2024", "en": "Programming 2 · 2024", "color": "--vio", "topics": [
+      { "es": "estructuras de datos", "en": "data structures" },
+      { "es": "POO en C++", "en": "OOP in C++" },
+      { "es": "algoritmos", "en": "algorithms" } ] }
+  ]
+}

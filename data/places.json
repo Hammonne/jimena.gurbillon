@@ -1,0 +1,40 @@
+{
+  "peru": {
+    "LIMA":       { "status": "home",    "city": "Lima",          "coords": [-77.04, -12.05] },
+    "CALLAO":     { "status": "visited", "city": "Callao",        "coords": [-77.13, -12.06] },
+    "CUSCO":      { "status": "visited", "city": "Cusco",         "coords": [-71.97, -13.53] },
+    "AREQUIPA":   { "status": "visited", "city": "Arequipa",      "coords": [-71.54, -16.41] },
+    "LORETO":     { "status": "visited", "city": "Iquitos",       "coords": [-73.25, -3.75] },
+    "JUNIN":      { "status": "visited", "city": "Pichanaki",     "coords": [-74.87, -10.92] },
+    "TUMBES":     { "status": "visited", "city": "Tumbes",        "coords": [-80.45, -3.57] },
+    "CAJAMARCA":  { "status": "visited", "city": "Cajamarca",     "coords": [-78.52, -7.16] },
+    "ICA":        { "status": "visited", "city": "Ica",           "coords": [-75.73, -14.07] },
+    "PIURA":      { "status": "visited", "city": "Piura",         "coords": [-80.63, -5.19] },
+    "ANCASH":     { "status": "visited", "city": "Chimbote",      "coords": [-78.58, -9.07] },
+    "LAMBAYEQUE": { "status": "visited", "city": "Chiclayo",      "coords": [-79.84, -6.77] },
+    "TACNA":      { "status": "visited", "city": "Tacna",         "coords": [-70.25, -18.01] },
+    "MOQUEGUA":   { "status": "visited", "city": "Ilo",           "coords": [-71.34, -17.64] },
+    "PUNO":       { "status": "want",    "city": "Lago Titicaca" }
+  },
+  "world": {
+    "Peru": "home",
+    "Ecuador": "visited",
+    "China": "dream",
+    "Switzerland": "dream",
+    "Brazil": "want",
+    "India": "want",
+    "Taiwan": "want",
+    "Italy": "want",
+    "France": "want",
+    "Germany": "want",
+    "United States of America": "want",
+    "United Kingdom": "want",
+    "Sweden": "want",
+    "Canada": "want",
+    "Finland": "want"
+  },
+  "dreams": [
+    { "label": "Tsinghua · PKU", "coords": [116.4, 39.9] },
+    { "label": "ETH Zürich",     "coords": [8.54, 47.37] }
+  ]
+}

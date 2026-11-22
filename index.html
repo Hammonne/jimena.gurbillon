@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jimena Gurbillon · prototipo</title>
+<meta name="description" content="Jimena Gurbillon · Data Science · UTEC · Lima, Peru. I combine data science, graphs and nonlinear dynamics to understand complex systems, with insatiable curiosity.">
+<link rel="canonical" href="https://hammonne.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hammonne.github.io/">
+<meta property="og:title" content="Jimena Gurbillon">
+<meta property="og:description" content="Jimena Gurbillon · Data Science · UTEC · Lima, Peru. I combine data science, graphs and nonlinear dynamics to understand complex systems, with insatiable curiosity.">
+<meta property="og:image" content="https://hammonne.github.io/img/jimena.jpg">
+<meta property="og:image:width" content="720">
+<meta property="og:image:height" content="488">
+<meta property="og:image:alt" content="Photo of Jimena Gurbillon">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_PE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jimena Gurbillon">
+<meta name="twitter:description" content="Jimena Gurbillon · Data Science · UTEC · Lima, Peru. I combine data science, graphs and nonlinear dynamics to understand complex systems, with insatiable curiosity.">
+<meta name="twitter:image" content="https://hammonne.github.io/img/jimena.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Jimena Gurbillon</a>
+    <nav class="menu" aria-label="Principal">
+      <div class="dd"><button type="button" aria-haspopup="true"><span data-i18n="nav_research">Research</span> ▾</button>
+        <div class="panel"><a href="#research" data-i18n="nav_areas">Research areas</a><a href="#graph-sec" data-i18n="nav_interests">Interests</a><a href="#stack" data-i18n="nav_stack">Tools</a><a href="#research" data-i18n="nav_projects">Projects</a></div></div>
+      <div class="dd"><button type="button" aria-haspopup="true"><span data-i18n="nav_teach">Teaching &amp; Mentoring</span> ▾</button>
+        <div class="panel"><a href="#teaching" data-i18n="nav_teaching">Teaching</a><a href="#teaching" data-i18n="nav_mentoring">Mentoring</a><a href="#work" data-i18n="nav_work">Working with me</a></div></div>
+      <div class="dd"><button type="button" aria-haspopup="true"><span data-i18n="nav_about">About</span> ▾</button>
+        <div class="panel"><a href="#about" data-i18n="nav_bio">Biography</a><a href="#map-sec" data-i18n="nav_places">Where I’m from</a><a href="#path" data-i18n="nav_path">Path &amp; awards</a><a href="#news" data-i18n="nav_news">Moments</a></div></div>
+      <a class="pill navlink" href="cv.pdf">CV</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <button class="iconbtn" id="themeBtn" type="button" aria-label="Cambiar tema">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <svg id="heroGraph" aria-hidden="true"></svg>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow" data-i18n="eyebrow">Data Science · UTEC · Lima, Peru</p>
+      <h1>Jimena Gurbillon</h1>
+      <p class="lead" data-i18n-html="lead">I combine <b>data science</b>, <b>graphs</b> and <b>nonlinear dynamics</b> to understand complex systems, with insatiable curiosity.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#research" data-i18n="cta1">Explore the research</a>
+        <a class="btn" href="#contact" data-i18n="cta2">CV &amp; contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="about">
+  <div class="wrap">
+    <div class="sh reveal"><span class="num">01</span><h2 data-i18n="about_t">About me</h2></div>
+    <div class="about reveal" style="margin-top:28px">
+      <div>
+        <p data-i18n-html="about_p1">Hi, I’m Jimena, a <b>Data Science</b> student at the <a href="https://www.utec.edu.pe" rel="noopener">University of Engineering and Technology (UTEC)</a>, in love with <b>physics</b> and <b>mathematics</b>. I like looking at the world through as many scientific lenses as I can.</p>
+        <p data-i18n-html="about_p2">I work with <b>graph neural networks</b> on geospatial urban-crime data at GINIA, and with <b>renormalization methods</b> for nonlinear oscillators at El Popular. Last term I focused on processing and visualizing <b>EEG signals</b>.</p>
+        <p data-i18n-html="about_p3">I want to do research. If you work with undergraduates and any of this rings a bell, <a href="#contact">write to me</a>.</p>
+        <div class="bioq"><img src="img/jimena.jpg" alt="Foto de Jimena Gurbillon"><blockquote>“The more I study, the more insatiable do I feel my genius for it to be.”<span>Ada Lovelace, 1843</span></blockquote></div>
+      </div>
+      <div class="facts">
+        <div class="fact"><span class="k" data-i18n="f_edu">Education</span><span data-i18n="f_edu_v">B.Sc. Data Science, UTEC (2022–) · ranked 1st in the program in 2022</span></div>
+        <div class="fact"><span class="k" data-i18n="f_groups">Groups</span><span data-i18n="f_groups_v">GINIA (urban crime, GNNs) · El Popular (nonlinear dynamics) · Optiminds (optimization)</span></div>
+        <div class="fact"><span class="k" data-i18n="f_teach">Teaching</span><span data-i18n="f_teach_v">TA for Machine Learning, Databases I and Programming 2</span></div>
+        <div class="fact"><span class="k" data-i18n="f_awards">Awards</span><span data-i18n="f_awards_v">UTEC Honor Roll · 1st place NTT DATA Hackathon 2024 · Top 4 Pre-IncUVa 2026 (Dermis)</span></div>
+        <div class="fact"><span class="k" data-i18n="f_lang">Languages</span><span data-i18n="f_lang_v">Spanish (native) · English (advanced) · Portuguese (basic)</span></div>
+        <div class="fact"><span class="k" data-i18n="f_out">Off the code</span><span data-i18n="f_out_v">Poetry, storytelling, fashion design (pattern-making and sewing), microeconomics, the science of skincare, karate and chess</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="map-sec">
+  <div class="wrap">
+    <div class="sh reveal"><span class="num">02</span><h2 data-i18n="map_t">Where I’m from</h2></div>
+    <p class="sub reveal" data-i18n="map_sub">I’m from Lima. This is the Peru I know, the Peru I still have to see and, beyond it, the places where I’d love to do research. Hover over a region; drag to pan and use Ctrl + scroll to zoom.</p>
+    <div class="mapgrid">
+      <div class="mapbox reveal">
+        <svg id="map" viewBox="0 0 800 900" role="img" aria-label="Mapa del Perú por departamentos coloreado según si Jimena los visitó"></svg>
+        <div class="maptools">
+          <div class="seg" role="group" aria-label="Vista">
+            <button type="button" data-view="peru" aria-pressed="true" data-i18n="v_peru">Peru</button>
+            <button type="button" data-view="world" aria-pressed="false" data-i18n="v_world">World</button>
+          </div>
+          <div class="seg" role="group" aria-label="Codificación">
+            <button type="button" data-enc="dots" aria-pressed="true" data-i18n="e_dots">Dots</button>
+            <button type="button" data-enc="area" aria-pressed="false" data-i18n="e_area">Areas</button>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="legend" id="legend"></div>
+        <p class="note" data-i18n="map_note">Click the legend to filter. Idioms: categorical choropleth + dot map, with semantic zoom Peru world (DS-5343, U2_T3).</p>
+      </div>
+    </div>
+    <div class="stats reveal" id="stats">
+      <div class="stat"><div class="v" data-count="2">0</div><div class="l" data-i18n="s1">research groups</div></div>
+      <div class="stat"><div class="v" data-count="3">0</div><div class="l" data-i18n="s2">courses as teaching assistant</div></div>
+      <div class="stat"><div class="v"><span data-count="1">0</span>.º</div><div class="l" data-i18n="s3">place, NTT DATA Hackathon</div></div>
+      <div class="stat"><div class="v" data-count="3">0</div><div class="l" data-i18n="s4">national karate bronze medals</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="research">
+  <div class="wrap">
+    <div class="sh reveal"><span class="num">03</span><h2 data-i18n="res_t">Graphs, chaos &amp; learning</h2></div>
+    <p class="sub reveal" data-i18n="res_sub">I’m interested in how patterns emerge in complex systems and how to make them visible. These are the lines I work on. Every figure is alive: move it, change its parameters.</p>
+    <div class="cards">
+      <article class="card reveal">
+        <div class="viz"><svg id="vGeo" aria-label="Grafo espacial animado con mensajes que viajan entre nodos"></svg></div>
+        <div class="body"><span class="tag">GINIA · 2024–</span><h3 data-i18n="c1_t">Graphs &amp; geospatial data</h3><p data-i18n="c1_p">Spatio-temporal GNNs and Transformers to analyze urban crime in Lima and São Paulo, on graphs built from geographic distances.</p><div class="pills"><span>GNN</span><span>GeoPandas</span><span>OpenStreetMap</span></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="viz"><canvas id="vVdp" aria-label="Partículas fluyendo en el espacio de fase del oscilador de Van der Pol"></canvas>
+          <div class="ctrl"><span>μ</span><input id="mu" type="range" min="0.1" max="4" step="0.1" value="1.4" aria-label="Parámetro mu"><span id="muv">1.4</span></div></div>
+        <div class="body"><span class="tag">El Popular · 2024–</span><h3 data-i18n="c2_t">Nonlinear dynamics</h3><p data-i18n="c2_p">Renormalization group for Van der Pol and Duffing oscillators: approximations closer to the exact solution than perturbation theory. Now, the coupled system.</p><div class="pills"><span>Van der Pol</span><span>Duffing</span><span>RG</span></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="viz"><canvas id="vAct" aria-label="Proyección de activaciones ocultas que se separan por clase a lo largo de las épocas"></canvas>
+          <div class="ctrl"><button type="button" id="actPlay">▶</button><span data-i18n="epoch">epoch</span><input id="epoch" type="range" min="0" max="100" value="0" aria-label="Época"><span id="epv">0</span></div></div>
+        <div class="body"><span class="tag">ML · DL · embeddings</span><h3 data-i18n="c3_t">Watching a network learn</h3><p data-i18n="c3_p">I like models for the math behind them. Here, hidden activations separating by class as the network trains (in the style of Rauber et al., 2017). Now exploring vector databases and embedding indexing.</p><div class="pills"><span>PyTorch</span><span>t-SNE / UMAP</span><span>HNSW</span></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="viz"><canvas id="vEeg" aria-hidden="true" style="opacity:.16"></canvas><svg id="vTopo" role="img" aria-label="Topomapa real de potencia theta en 61 electrodos, sin privación y con privación de sueño"></svg>
+          <div class="ctrl"><div class="seg" role="group" aria-label="Condición" style="border:0;background:none"><button type="button" data-cond="NS" aria-pressed="true" data-i18n="ns">Rested</button><button type="button" data-cond="SD" aria-pressed="false" data-i18n="sd">Sleep-deprived</button><button type="button" data-cond="d" aria-pressed="false">Δ</button></div></div></div>
+        <div class="body"><span class="tag" data-i18n="c4_tag">BATIMIX · DS5343 · 2026</span><h3 data-i18n="c4_t">EEG &amp; sleep deprivation</h3><p data-i18n-html="c4_p">A D3 visual analytics system on individual vulnerability to sleep deprivation (OpenNeuro ds004902, 68 people with paired EEG). I built the topomap matrix, the data and the methods, with Andrea Coa and Paolo Medrano. <a href="https://github.com/Andrea-Coa/data-visualization-project" rel="noopener">Repository</a></p><div class="pills"><span>MNE</span><span>topomap</span><span>D3</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="graph-sec">
+  <div class="wrap">
+    <div class="sh reveal"><span class="num">04</span><h2 data-i18n="g_t">How it all connects</h2></div>
+    <p class="sub reveal" data-i18n="g_sub">Right now I’m deep into data visualization and vector databases, but also trees, graphs and geospatial models. Yes, it’s a lot. Drag the nodes; click a big node to pin its community and read its topics.</p>
+    <div class="reveal" style="overflow:visible"><svg id="graph" role="img" aria-label="Grafo de intereses con siete comunidades"></svg></div>
+    <div class="glegend reveal" id="glegend"></div>
+  </div>
+</section>
+
+<section class="s" id="stack">
+  <div class="wrap">
+    <div class="sh reveal"><span class="num">05</span><h2 data-i18n="k_t">Tools &amp; projects</h2></div>
+    <p class="sub reveal" data-i18n="k_sub">Which tools I used in which project, as a hierarchical edge bundling. Hover over a project or a tool.</p>
+    <div class="reveal" style="max-width:1120px;margin:0 auto"><svg id="bundle" viewBox="-150 -70 1200 1040" role="img" aria-label="Edge bundling entre proyectos y herramientas"></svg></div>
+  </div>
+</section>
+
+<section class="s" id="news">
+  <div class="wrap">
+    <div class="sh reveal"><span class="num">06</span><h2 data-i18n="n_t">Moments</h2></div>
+    <p class="sub reveal" data-i18n="n_sub">A few photos from awards, talks and mentoring.</p>
+    <div class="gallery">
+      <figure class="ph reveal"><img src="img/dermis.jpg" alt="Equipo de Dermis frente a la pantalla del premio en IncuvaHouse"><figcaption><span class="y">2026</span><b data-i18n="n1">Dermis · Top 4 at Pre-IncUVa Demo Day</b><span data-i18n="n1s">S/ 1000 prize at IncuvaHouse, UTEC Ventures</span></figcaption></figure>
+      <figure class="ph reveal"><img src="img/ntt.jpg" alt="Equipo en el Hackathon Data &amp; Analytics de NTT DATA y UTEC Posgrado"><figcaption><span class="y">2024</span><b data-i18n="n2">1st place · NTT DATA Hackathon</b><span data-i18n="n2s">Food waste and donation routes</span></figcaption></figure>
+      <figure class="ph reveal"><img src="img/honors.jpg" style="object-position:50% 30%" alt="Jimena y una compañera con sus diplomas del Cuadro de Honor UTEC"><figcaption><span class="y">2023</span><b data-i18n="n3">UTEC Honor Roll</b><span data-i18n="n3s">Academic excellence, Data Science</span></figcaption></figure>
+      <figure class="ph reveal"><img src="img/schmarzo.jpg" alt="Jimena con Bill Schmarzo en UTEC"><figcaption><span class="y">UTEC</span><b data-i18n="n4">With Bill Schmarzo</b><span data-i18n="n4s">Talk on the economics of data</span></figcaption></figure>
+      <figure class="ph reveal"><img src="img/mentor.jpg" alt="Selfie de Jimena con estudiantes ingresantes después de una charla"><figcaption><span class="y">2024</span><b data-i18n="n5">Peer mentor</b><span data-i18n="n5s">Talks for incoming students</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="path">
+  <div class="wrap">
+    <div class="sh reveal"><span class="num">07</span><h2 data-i18n="p_t">Path</h2></div>
+    <p class="sub reveal" data-i18n="p_sub">What I’ve done since 2022, side by side. Bars are things that last; dots are moments. Hover for details.</p>
+    <div class="reveal" style="overflow-x:auto"><svg id="life" role="img" aria-label="Línea de tiempo por áreas de 2022 a 2026" style="display:block;min-width:900px;width:100%;height:auto"></svg></div>
+  </div>
+</section>
+
+<section class="s" id="teaching">
+  <div class="wrap">
+    <div class="sh reveal"><span class="num">08</span><h2 data-i18n="t_t">Teaching &amp; Mentoring</h2></div>
+    <p class="sub reveal" data-i18n="t_sub">I’ve been a teaching assistant for three courses and a peer mentor for first-year students. Click a course to expand or collapse its topics.</p>
+    <div class="split">
+      <div class="reveal"><svg id="teach" viewBox="0 0 760 440" role="img" aria-label="Árbol colapsable con los temas enseñados"></svg></div>
+      <div class="mlist reveal">
+        <div class="metric"><span class="v">18/20</span><span data-i18n="m1">average student satisfaction in ML</span></div>
+        <div class="metric"><span class="v">15 18</span><span data-i18n="m2">in the Databases I continuous-assessment average (from 15 to 18)</span></div>
+        <div class="metric"><span class="v">−50 %</span><span data-i18n="m3">grading time with Gradescope + ChatGPT</span></div>
+        <div class="metric"><span class="v">80 %</span><span data-i18n="m4">weekly retention as a peer mentor</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="work">
+  <div class="wrap">
+    <div class="sh reveal"><span class="num">09</span><h2 data-i18n="w_t">Working with me</h2></div>
+    <p class="sub reveal" data-i18n="w_sub">I’m looking for undergraduate research opportunities and, later on, a PhD.</p>
+    <div class="ww">
+      <div class="box reveal"><h3 data-i18n="w1_t">Faculty &amp; researchers</h3><p data-i18n="w1_p">If your group works with graphs, geospatial data, nonlinear dynamics or visualization, I’d love to join as an assistant or intern.</p></div>
+      <div class="box reveal"><h3 data-i18n="w2_t">Open science</h3><p data-i18n="w2_p">My code is public and documented, and I like pairing results with interactive visualizations.</p></div>
+      <div class="box reveal"><h3 data-i18n="w3_t">Next</h3><p data-i18n="w3_p">I want to do a PhD; Tsinghua, Peking University and ETH Zürich are high on my list.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><h2 style="font-size:32px" data-i18n="c_t">Get in touch</h2><p style="color:var(--muted);margin:10px 0 0">jimena.gurbillon@utec.edu.pe</p></div>
+      <div><h4 data-i18n="c_else">Elsewhere</h4><ul>
+        <li><a href="https://github.com/Hammonne" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/jgurbillon" rel="noopener">LinkedIn</a></li>
+        <li><a href="#contact">ORCID <span style="color:var(--faint)">(pendiente)</span></a></li>
+        <li><a href="cv.pdf">CV (PDF)</a></li></ul></div>
+      <div><h4 data-i18n="c_nav">Navigate</h4><ul>
+        <li><a href="#about" data-i18n="nav_about">About</a></li><li><a href="#research" data-i18n="nav_research">Research</a></li>
+        <li><a href="#teaching" data-i18n="nav_teach">Teaching &amp; Mentoring</a></li><li><a href="#path" data-i18n="nav_path">Path &amp; awards</a></li></ul></div>
+    </div>
+    <div class="copy"><span>© 2026 Jimena Gurbillon</span><span data-i18n="credit">Built with D3.js. Prototype.</span></div>
+  </div>
+</footer>
+<div class="tip" id="tip" role="status"></div>
+</body>
+</html>

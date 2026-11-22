@@ -1,0 +1,35 @@
+{
+  "now": 2026.89,
+  "lanes": [
+    { "es": "UTEC", "en": "UTEC", "color": "--text", "rows": [
+      [ { "es": "B.Sc. Ciencia de Datos", "en": "B.Sc. Data Science", "start": 2022.17, "end": "now", "label": "in" } ]
+    ] },
+    { "es": "Investigación", "en": "Research", "color": "--accent", "rows": [
+      [ { "es": "El Popular · dinámica no lineal", "en": "El Popular · nonlinear dynamics", "start": 2024.17, "end": "now", "label": "in" } ],
+      [ { "es": "GINIA · crimen urbano y GNNs", "en": "GINIA · urban crime & GNNs", "start": 2024.75, "end": "now", "label": "in" } ],
+      [ { "es": "BATIMIX · EEG", "en": "BATIMIX · EEG", "start": 2026.6, "end": 2026.89, "label": "left" } ],
+      [ { "es": "Optiminds · optimización", "en": "Optiminds · optimization", "start": 2026.6, "end": "now", "label": "left" } ]
+    ] },
+    { "es": "Docencia", "en": "Teaching", "color": "--teal", "rows": [
+      [ { "es": "TA Programación 2", "en": "TA Programming 2", "start": 2024.25, "end": 2024.55, "label": "in" },
+        { "es": "TA Machine Learning", "en": "TA Machine Learning", "start": 2025.17, "end": 2025.95, "label": "in" },
+        { "es": "TA Base de Datos I", "en": "TA Databases I", "start": 2026.2, "end": 2026.55, "label": "in" } ],
+      [ { "es": "Mentora par", "en": "Peer mentor", "start": 2024.17, "end": 2024.5, "label": "in" } ]
+    ] },
+    { "es": "Comunidad", "en": "Community", "color": "--vio", "rows": [
+      [ { "es": "Democratic Data Science Society", "en": "Democratic Data Science Society", "start": 2024.17, "end": 2024.95 } ],
+      [ { "es": "Club de Matemática Avanzada · OIMU", "en": "Advanced Math Club · OIMU", "start": 2024.17, "end": "now", "label": "in" } ]
+    ] },
+    { "es": "Premios", "en": "Awards", "color": "--yel", "rows": [
+      [ { "es": "Cuadro de Honor UTEC", "en": "UTEC Honor Roll", "start": 2023.3 },
+        { "es": "1.er lugar Hackathon NTT DATA", "en": "1st NTT DATA Hackathon", "start": 2024.2 },
+        { "es": "Dermis · Top 4 Pre-IncUVa", "en": "Dermis · Top 4 Pre-IncUVa", "start": 2026.2 } ]
+    ] },
+    { "es": "Karate y ajedrez", "en": "Karate & chess", "color": "--coral", "rows": [
+      [ { "es": "Bronce · Nacional Univ. 2022-II", "en": "Bronze · National Univ. 2022-II", "start": 2022.6 },
+        { "es": "Equipo de ajedrez UTEC", "en": "UTEC chess team", "start": 2026.0, "end": "now", "label": "in" } ],
+      [ { "es": "Bronce · Universiada Lima 2022", "en": "Bronze · Universiada Lima 2022", "start": 2022.87 } ],
+      [ { "es": "Bronce · Apertura 2023", "en": "Bronze · Opening 2023", "start": 2023.45 } ]
+    ] }
+  ]
+}
