@@ -15,7 +15,11 @@ export function initBundle(data) {
   const svg = d3.select('#bundle'); const g = svg.append('g').attr('transform', `translate(${W / 2},${W / 2})`);
   // group arcs
   const arc = d3.arc().innerRadius(R - 62).outerRadius(R - 56);
-  g.append('g').selectAll('path').data(root.children).join('path').attr('d', (d) => { const ls = d.leaves(); return arc({ startAngle: ls[0].x - .04, endAngle: ls[ls.length - 1].x + .04 }); }).style('fill', (d) => `var(${groups[d.data.gi].v})`).attr('opacity', .9);
+  // margen del arco = media separación entre hojas vecinas: así los nodos de los extremos quedan
+  // bien cubiertos (con un margen fijo de .04 rad quedaban justo en la punta del arco)
+  const step = d3.min(root.children, (c) => { const ls = c.leaves(); return ls.length > 1 ? ls[1].x - ls[0].x : Infinity; });
+  const pad = step / 2;
+  g.append('g').selectAll('path').data(root.children).join('path').attr('d', (d) => { const ls = d.leaves(); return arc({ startAngle: ls[0].x - pad, endAngle: ls[ls.length - 1].x + pad }); }).style('fill', (d) => `var(${groups[d.data.gi].v})`).attr('opacity', .9);
   const glab = g.append('g').selectAll('text').data(root.children).join('text').attr('dy', '0.32em').style('fill', (d) => `var(${groups[d.data.gi].v})`).style('font', '600 14px var(--mono)').style('text-transform', 'uppercase').style('letter-spacing', '.06em')
     .attr('transform', (d) => { const ls = d.leaves(); const a = (ls[0].x + ls[ls.length - 1].x) / 2; const rr = R + 172; return `translate(${Math.sin(a) * rr},${-Math.cos(a) * rr})`; }).attr('text-anchor', (d) => { const ls = d.leaves(); const a = (ls[0].x + ls[ls.length - 1].x) / 2; return Math.sin(a) > .35 ? 'start' : Math.sin(a) < -.35 ? 'end' : 'middle'; });
   const line = d3.lineRadial().curve(d3.curveBundle.beta(.85)).radius((d) => d.y).angle((d) => d.x);
@@ -54,7 +58,7 @@ export function initBundle(data) {
     })
     .on('focus', (e, d) => { focused = e.currentTarget.matches(':focus-visible') ? d : null; showRing(); })   // anillo punteado solo con teclado.on('blur', () => { focused = null; showRing(); });
   svg.on('click', () => select(null))   // clic en el fondo (o en una arista) limpia la selección
-    .on('keydown', (e) => { if (e.key === 'Escape') select(null); });
+    .on('keydown', (e) => { if (e.key === 'Escape' && selected) { e.preventDefault(); select(null); } });   // con selección, Escape solo limpia; sin selección, cierra la sección
   const nameOf = (d) => lang === 'en' && NM_EN[d.data.name] ? NM_EN[d.data.name] : d.data.name;
   const setL = () => {
     glab.text((d) => groups[d.data.gi][lang]); nodeT.text(nameOf);

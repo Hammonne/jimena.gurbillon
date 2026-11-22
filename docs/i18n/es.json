@@ -16,8 +16,6 @@
   "nav_news": "Momentos",
   "eyebrow": "Data Science · UTEC · Lima, Perú",
   "lead": "Combino <b>ciencia de datos</b>, <b>grafos</b> y <b>dinámica no lineal</b> para entender sistemas complejos, con curiosidad insaciable.",
-  "cta1": "Explorar la investigación",
-  "cta2": "CV y contacto",
   "about_t": "Sobre mí",
   "about_p1": "Hola, soy Jimena, estudiante de <b>Ciencia de Datos</b> en la <a href=\"https://www.utec.edu.pe\" rel=\"noopener\">Universidad de Ingeniería y Tecnología (UTEC)</a> y apasionada por la <b>física</b> y las <b>matemáticas</b>. Amo ver el mundo desde diferentes perspectivas de la ciencia.",
   "about_p2": "Investigo con <b>redes neuronales de grafos</b> sobre datos geoespaciales de crimen urbano en el grupo GINIA, y con <b>métodos de renormalización</b> en osciladores no lineales en El Popular. El último ciclo me dediqué a procesar y visualizar <b>señales EEG</b>.",
@@ -41,10 +39,6 @@
   "e_dots": "Puntos",
   "e_area": "Áreas",
   "map_note": "Clic en la leyenda para filtrar. Idioms: coroplético categórico + dot map, con zoom semántico Perú mundo (DS-5343, U2_T3).",
-  "s1": "grupos de investigación",
-  "s2": "cursos como asistente de docencia",
-  "s3": "lugar, Hackathon NTT DATA",
-  "s4": "bronces nacionales de karate",
   "res_t": "Grafos, caos y aprendizaje",
   "res_sub": "Me interesa cómo emergen patrones en sistemas complejos y cómo hacerlos visibles. Estas son las líneas en las que trabajo. Cada figura está viva: muévela, cambia sus parámetros.",
   "c1_t": "Grafos y datos geoespaciales",
@@ -123,5 +117,12 @@
     "oct",
     "nov",
     "dic"
-  ]
+  ],
+  "back_map": "Volver al mapa",
+  "prev": "Anterior",
+  "next": "Siguiente",
+  "pn_aria": "Sección anterior y siguiente",
+  "all_sections": "Todas las secciones",
+  "map_aria": "Mapa de mí: cada nodo grande es una sección de la página",
+  "photo_alt": "Foto de Jimena Gurbillon"
 }

@@ -16,8 +16,6 @@
   "nav_news": "Moments",
   "eyebrow": "Data Science · UTEC · Lima, Peru",
   "lead": "I combine <b>data science</b>, <b>graphs</b> and <b>nonlinear dynamics</b> to understand complex systems, with insatiable curiosity.",
-  "cta1": "Explore the research",
-  "cta2": "CV & contact",
   "about_t": "About me",
   "about_p1": "Hi, I’m Jimena, a <b>Data Science</b> student at the <a href=\"https://www.utec.edu.pe\" rel=\"noopener\">University of Engineering and Technology (UTEC)</a>, in love with <b>physics</b> and <b>mathematics</b>. I like looking at the world through as many scientific lenses as I can.",
   "about_p2": "I work with <b>graph neural networks</b> on geospatial urban-crime data at GINIA, and with <b>renormalization methods</b> for nonlinear oscillators at El Popular. Last term I focused on processing and visualizing <b>EEG signals</b>.",
@@ -41,10 +39,6 @@
   "e_dots": "Dots",
   "e_area": "Areas",
   "map_note": "Click the legend to filter. Idioms: categorical choropleth + dot map, with semantic zoom Peru world (DS-5343, U2_T3).",
-  "s1": "research groups",
-  "s2": "courses as teaching assistant",
-  "s3": "place, NTT DATA Hackathon",
-  "s4": "national karate bronze medals",
   "res_t": "Graphs, chaos & learning",
   "res_sub": "I’m interested in how patterns emerge in complex systems and how to make them visible. These are the lines I work on. Every figure is alive: move it, change its parameters.",
   "c1_t": "Graphs & geospatial data",
@@ -123,5 +117,12 @@
     "Oct",
     "Nov",
     "Dec"
-  ]
+  ],
+  "back_map": "Back to map",
+  "prev": "Previous",
+  "next": "Next",
+  "pn_aria": "Previous and next section",
+  "all_sections": "All sections",
+  "map_aria": "Map of me: each large node is a section of the page",
+  "photo_alt": "Photo of Jimena Gurbillon"
 }
