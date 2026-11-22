@@ -20,12 +20,11 @@ README.md               este archivo
 docs/                   el sitio (GitHub Pages publica esta carpeta)
   index.html            estructura de la página (sin textos fijos: salen de i18n/)
   css/style.css         estilos y colores de los temas oscuro/claro
-  js/main.js            carga datos y dice qué viz arranca cada sección
-  js/router.js          navegación por hash (#about, #places, …), Previous / Next, Escape
+  js/main.js            carga datos y arranca cada viz cuando su sección se acerca a la pantalla
   js/i18n.js            cambio de idioma ES/EN
   js/ui.js              tema y aparición al hacer scroll
-  js/viz/*.js           una visualización por archivo (egomap = la portada, map, interests,
-                        bundle, timeline, teaching, ginia, vanderpol, network, eeg)
+  js/viz/*.js           una visualización por archivo (hero = grafo de fondo de la portada, map, interests, bundle, timeline, teaching, ginia,
+                        vanderpol, network, eeg)
   i18n/es.json, en.json textos de la página
   data/*.json           datos de las visualizaciones
   img/                  fotos
@@ -42,12 +41,12 @@ Todos los nombres van en dos idiomas (`"es"` y `"en"`). Los colores son variable
 
 | Archivo | Qué controla |
 |---|---|
-| `sitemap.json` | La portada ("mapa de mí"). `sections`: las 9 secciones en orden, con su color, su descripción (el tooltip) y sus `satellites` (el contenido que rodea cada nodo). `links`: pares de satélites relacionados entre secciones (la telaraña). El `id` de cada sección es su dirección: `#about`, `#places`, `#research`, `#interests`, `#tools`, `#path`, `#teaching`, `#moments`, `#work`. |
 | `places.json` | Mapa. `peru`: departamentos con estado (`home`, `visited`, `want`), ciudad y coordenadas `[lon, lat]` del marcador. Los departamentos que no aparecen cuentan como `want`. `world`: estado de cada país (nombre en inglés, como en `world.json`). `dreams`: los pines de Tsinghua/PKU y ETH. Los números de la leyenda se calculan solos. |
 | `interests.json` | Grafo "How it all connects": métodos, modelos y conceptos (no herramientas; esas van en `tools.json`). `communities`: cada comunidad con un `id`, su color y sus temas (cada tema con su propio `id`). `links`: pares de `id` con una conexión real entre conceptos (también puede ser el `id` de una comunidad, como `"gnn"`). Las etiquetas se acomodan solas para no pisarse. |
 | `tools.json` | Edge bundling "Tools & projects". `groups`: grupos y sus elementos. `uses`: qué herramientas usa cada proyecto. `english`: traducción de los nombres que cambian en inglés. |
 | `timeline.json` | Trayectoria. Un carril por área; cada fila es una lista de elementos. Con `end` es una barra; sin `end`, un punto. `"end": "now"` llega hasta hoy (`now` arriba del archivo). `label`: `"in"` (dentro de la barra), `"left"` (a la izquierda) u omitido (a la derecha). |
 | `teaching.json` | Árbol de docencia: cursos y sus temas. |
+| `hidden_activity.json` | Activaciones reales de la red (tarjeta "Watching a network learn"). Se genera con `python scripts/hidden_activity.py`; no se edita a mano. |
 | `eeg_topo.json` | Topomapa EEG (61 electrodos, datos reales de BATIMIX). |
 | `peru.json`, `world.json` | Geometrías del mapa. No hace falta tocarlas. |
 
@@ -61,4 +60,4 @@ El repo `Hammonne/jimena.gurbillon` se publica solo en <https://hammonne.github.
 
 ## Navegación
 
-La página es una sola: la portada es el mapa y cada sección se abre en el mismo lugar. Para mandar un link directo a una sección, agrega su dirección al final, por ejemplo `https://hammonne.github.io/jimena.gurbillon/#path`. El botón atrás del navegador y la recarga respetan la sección abierta. Cada visualización se carga recién cuando abres su sección.
+Es una sola página que se lee bajando. Cada sección tiene su dirección: `#about`, `#places`, `#research`, `#interests`, `#tools`, `#path`, `#teaching`, `#moments`, `#work`. Para mandar un link directo a una sección, agrégala al final, por ejemplo `https://hammonne.github.io/jimena.gurbillon/#path`. Cada visualización se carga recién cuando te acercas a su sección.

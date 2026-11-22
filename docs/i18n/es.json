@@ -117,13 +117,9 @@
     "nov",
     "dic"
   ],
-  "back_map": "Volver al mapa",
-  "prev": "Anterior",
-  "next": "Siguiente",
-  "pn_aria": "Sección anterior y siguiente",
-  "all_sections": "Todas las secciones",
-  "map_aria": "Mapa de mí: cada nodo grande es una sección de la página",
   "photo_alt": "Foto de Jimena Gurbillon",
   "act_label": "época {e} · acc de prueba {a}",
-  "c3_note": "Datos reales: MLP sobre sklearn digits, última capa oculta, t-SNE alineado entre épocas. Basado en Rauber et al. (2017)."
+  "c3_note": "Datos reales: MLP sobre sklearn digits, última capa oculta, t-SNE alineado entre épocas. Basado en Rauber et al. (2017).",
+  "cta1": "Explorar la investigación",
+  "cta2": "CV y contacto"
 }

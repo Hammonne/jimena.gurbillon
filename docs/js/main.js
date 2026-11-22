@@ -1,10 +1,9 @@
-/* Punto de entrada: carga textos y datos, dibuja el "mapa de mí" y arranca el router.
-   Cada visualización se inicia solo cuando su sección se abre por primera vez. */
-import { redraw } from './core.js';
+/* Punto de entrada: carga textos y datos, y arranca cada visualización cuando su sección
+   se acerca a la pantalla (así la página carga rápido). */
+import { redraw, reduce } from './core.js';
 import { loadI18n, setLang, initLangToggle } from './i18n.js';
 import { initTheme, initReveal } from './ui.js';
-import { initRouter } from './router.js';
-import { initEgoMap } from './viz/egomap.js';
+import { initHero } from './viz/hero.js';
 import { initMap } from './viz/map.js';
 import { initGinia } from './viz/ginia.js';
 import { initVanDerPol } from './viz/vanderpol.js';
@@ -19,41 +18,41 @@ initLangToggle();
 initTheme();
 
 try {
-  const [, interests, tools, timeline, teaching, sitemap] = await Promise.all([
+  const [, interests, tools, timeline, teaching] = await Promise.all([
     loadI18n(),
     d3.json('data/interests.json'),
     d3.json('data/tools.json'),
     d3.json('data/timeline.json'),
-    d3.json('data/teaching.json'),
-    d3.json('data/sitemap.json')
+    d3.json('data/teaching.json')
   ]);
   setLang('en');        // inglés por defecto
+  initHero();           // grafo decorativo, tenue, detrás de la portada
 
-  /* Qué arranca cada sección. init: la primera vez que se abre; show: las siguientes
-     (para las viz que dependen del tamaño de su contenedor). */
-  let graphW = 0;
-  const widthOf = (sel) => Math.round(document.querySelector(sel).getBoundingClientRect().width);
+  /* Qué arranca cada sección (por su id). */
   const views = {
-    places: { init: () => initMap() },
-    research: {
-      init: () => { initGinia(); initVanDerPol(); initNetwork(); initEegJoyplot(); initEegTopomap(); },
-      show: () => dispatchEvent(new Event('resize'))   // los canvas vuelven a medir su tarjeta
-    },
-    interests: {
-      init: () => { graphW = widthOf('#graph'); initInterests(interests); },
-      show: () => {   // si cambió el ancho mientras estaba oculta, se vuelve a calcular el layout
-        const w = widthOf('#graph');
-        if (Math.abs(w - graphW) > 2) { graphW = w; d3.select('#graph').selectAll('*').remove(); d3.select('#glegend').selectAll('*').remove(); initInterests(interests); }
-      }
-    },
-    tools: { init: () => initBundle(tools) },
-    path: { init: () => initTimeline(timeline) },
-    teaching: { init: () => initTeaching(teaching) }
+    places: () => initMap(),
+    research: () => { initGinia(); initVanDerPol(); initNetwork(); initEegJoyplot(); initEegTopomap(); },
+    interests: () => initInterests(interests),
+    tools: () => initBundle(tools),
+    path: () => initTimeline(timeline),
+    teaching: () => initTeaching(teaching)
   };
+  const done = new Set();
+  const run = (id) => { if (done.has(id)) return; done.add(id); lazy.unobserve(document.getElementById(id)); views[id](); };
+  const lazy = new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) run(e.target.id); }), { rootMargin: '400px 0px' });
+  Object.keys(views).forEach((id) => lazy.observe(document.getElementById(id)));
 
-  let router;
-  const egomap = await initEgoMap(sitemap, { onOpen: (id) => router.open(id) });
-  router = initRouter({ sitemap, views, egomap });
+  /* Al saltar a una sección (menú, link directo o botón atrás), algunas viz cambian de alto al iniciarse
+     y moverían el destino: se inician todas primero y luego se vuelve a apuntar a la sección. */
+  const jump = (smooth) => {
+    const el = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (!el) return;
+    Object.keys(views).forEach(run);
+    requestAnimationFrame(() => el.scrollIntoView({ behavior: smooth && !reduce ? 'smooth' : 'auto' }));
+  };
+  addEventListener('hashchange', () => jump(true));
+  jump(false);
+
   if (document.fonts) document.fonts.ready.then(() => redraw('lang'));
 } catch (err) {
   console.error('No se pudo iniciar la página:', err);

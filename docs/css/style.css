@@ -48,7 +48,7 @@ header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--b
 
 /* HERO */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-#heroGraph{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+#heroGraph{position:absolute;inset:0;width:100%;height:100%;opacity:.3}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1fr;gap:48px;align-items:center;padding-top:96px;padding-bottom:96px}
 @media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-top:64px;padding-bottom:64px}}
 .eyebrow{font:500 13px var(--mono);color:var(--accent-ink);letter-spacing:.06em;text-transform:uppercase;margin:0 0 16px}
@@ -183,41 +183,9 @@ footer a{color:var(--text)}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
-/* ---------- PORTADA: "mapa de mí" ---------- */
-.intro{overflow:hidden;max-height:420px;transition:max-height .6s ease,opacity .4s ease}
-.intro .wrap{display:flex;align-items:center;gap:24px;padding-top:44px;padding-bottom:4px}
-.intro img{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:50% 32%;border:1px solid var(--line2);flex:none}
-.intro .eyebrow{margin:0 0 8px}
-.intro h1{font-size:clamp(34px,4.6vw,54px);margin:0 0 8px}
-.intro .lead{margin:0;max-width:62ch;font-size:clamp(16px,1.7vw,19px)}
-body.in-section .intro{max-height:0;opacity:0}
-.mapme .wrap{position:relative}
-#egomap{display:block;width:100%;overflow:visible}
-#egomap .sat,#egomap .dot,#egomap path,#egomap text{transition:opacity .22s}
-.mapbar{display:none}
-body.in-section .mapbar{display:flex;padding-top:18px}
-#secnav ul{list-style:none;margin:0;padding:6px 0 8px;display:flex;flex-wrap:wrap;gap:6px 22px}
-#secnav a{color:var(--muted);font-size:14px}
-#secnav a:hover{color:var(--text)}
-#secnav a[aria-current="page"]{color:var(--text);font-weight:600}
-body.in-section #secnav{display:none}
-.view.entering{animation:viewIn .45s ease both}
-@keyframes viewIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.view h2:focus{outline:none}
-.pn{display:flex;justify-content:space-between;gap:16px;margin-top:64px;padding-top:20px;border-top:1px solid var(--line)}
-.pn a{display:grid;gap:2px;color:var(--text);font-weight:600}
-.pn a:hover{text-decoration:none;color:var(--accent-ink)}
-.pn .k{font:500 12px var(--mono);color:var(--faint);text-transform:uppercase;letter-spacing:.06em}
-.pn .next{text-align:right;margin-left:auto}
-@media (max-width:640px){
-  .intro .wrap{gap:16px;padding-top:28px}
-  .intro img{width:64px;height:64px}
-  body.in-section #egomap{display:none}
-  body.in-section .mapbar{padding-top:12px}
-  body.in-section #secnav{display:block;position:sticky;top:64px;z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:12px}
-  body.in-section #secnav ul{flex-wrap:nowrap;overflow-x:auto;gap:6px;padding:10px 0;scrollbar-width:none}
-  body.in-section #secnav a{display:inline-block;white-space:nowrap;padding:6px 12px;border:1px solid var(--line2);border-radius:999px;font-size:13px}
-  body.in-section #secnav a[aria-current="page"]{background:var(--text);color:var(--bg);border-color:var(--text)}
-}
-@media (prefers-reduced-motion:reduce){.intro,#egomap .sat,#egomap .dot,#egomap path,#egomap text{transition:none}.view.entering{animation:none}}
-body.in-section .view{padding-top:48px}
+/* ---------- PORTADA: foto chica junto al nombre ---------- */
+.hero-row{display:flex;align-items:center;gap:32px}
+.hero-row img{width:112px;height:112px;border-radius:50%;object-fit:cover;object-position:50% 32%;border:1px solid var(--line2);flex:none}
+@media (max-width:640px){.hero-row{flex-direction:column;align-items:flex-start;gap:20px}.hero-row img{width:80px;height:80px}}
+/* al saltar desde el menú, el título de la sección no queda debajo del header fijo */
+section.s{scroll-margin-top:64px}

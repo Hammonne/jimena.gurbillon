@@ -117,13 +117,9 @@
     "Nov",
     "Dec"
   ],
-  "back_map": "Back to map",
-  "prev": "Previous",
-  "next": "Next",
-  "pn_aria": "Previous and next section",
-  "all_sections": "All sections",
-  "map_aria": "Map of me: each large node is a section of the page",
   "photo_alt": "Photo of Jimena Gurbillon",
   "act_label": "epoch {e} · test acc {a}",
-  "c3_note": "Real data: MLP on sklearn digits, last hidden layer, t-SNE aligned across epochs. After Rauber et al. (2017)."
+  "c3_note": "Real data: MLP on sklearn digits, last hidden layer, t-SNE aligned across epochs. After Rauber et al. (2017).",
+  "cta1": "Explore the research",
+  "cta2": "CV & contact"
 }

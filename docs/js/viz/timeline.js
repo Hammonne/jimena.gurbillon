@@ -43,5 +43,6 @@ export function initTimeline(data) {
     bl.transition().duration(400).delay((d, i) => reduce ? 0 : 500 + i * 70).attr('opacity', 1);
     pg.select('circle').transition().duration(reduce ? 0 : 500).delay((d, i) => reduce ? 0 : 600 + i * 90).attr('r', 7);
   };
-  svg.node().closest('.reveal').addEventListener('seen', grow);
+  const rv = svg.node().closest('.reveal');
+  if (rv.classList.contains('in')) grow(); else rv.addEventListener('seen', grow);
 }
